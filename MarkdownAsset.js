@@ -2,25 +2,20 @@ const { Asset } = require("parcel-bundler");
 const MDXC = require("mdxc");
 
 class MarkdownAsset extends Asset {
-  constructor(name, options) {
-    super(name, options);
+  constructor(...args) {
+    super(...args);
     this.type = "js";
-    this.mdxOptions = options.mdx;
 
-    this.mdx = new MDXC(
-      Object.assign(
-        {
-          linkify: true,
-          typographer: true,
-        },
-        options.mdx
-      )
-    );
+    this.mdx = new MDXC({
+      commonJS: true,
+      linkify: true,
+      highlight: false,
+    });
   }
 
   parse(code) {
-    this.contents = this.mdx.render(code);
-    return super.parse(this.contents);
+    const contents = this.mdx.render(code);
+    return super.parse(contents);
   }
 }
 
