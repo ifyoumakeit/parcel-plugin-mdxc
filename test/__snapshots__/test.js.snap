@@ -4,10 +4,9 @@ exports[`MdxcAsset should parse markdown correctly. 1`] = `
 Array [
   Object {
     "type": "js",
-    "vale": "const React = require('react').default || require('react')
-const { createElement, createFactory } = require('react')
-const Mdx = require(\\"./index.md\\").default || require(\\"./index.md\\");
-module.exports = function({ factories={} }) {
+    "value": "import React, { createElement, createFactory } from 'react'
+import Mdx from \\"./index.md\\";
+export default function({ factories={} }) {
   const {
     p = createFactory('p'),
     wrapper = createFactory('div'),
@@ -16,16 +15,16 @@ module.exports = function({ factories={} }) {
   return wrapper({},
 
 p({},
-  \\"import React from \\\\\\"react\\\\\\";\\",
+  \\"import React from \\\\\\"react\\\\\\";\\\\nimport ReactDOM from \\\\\\"react-dom\\\\\\";\\",
 ),
 p({},
-  \\"console.log(\\\\n  \\",
+  \\"ReactDOM.render(\\\\n  \\",
   createElement(\\"h1\\", null,
     \\"\\\\n    \\",
     createElement(Mdx, null),
     \\"Garwacke\\\\n  \\",
   ),
-  \\",\\\\n  \\\\\\"!\\\\\\"\\\\n);\\",
+  \\",\\\\n  document.querySelector(\\\\\\"#root\\\\\\")\\\\n);\\",
 )
 
   )
@@ -39,10 +38,9 @@ exports[`MdxcAsset should parse markdown with images correctly. 1`] = `
 Array [
   Object {
     "type": "js",
-    "vale": "const React = require('react').default || require('react')
-const { createElement, createFactory } = require('react')
+    "value": "import React, { createElement, createFactory } from 'react'
 
-module.exports = function({ factories={} }) {
+export default function({ factories={} }) {
   const {
     h1 = createFactory('h1'),
     h2 = createFactory('h2'),

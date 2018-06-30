@@ -16,7 +16,6 @@ class MdxcAsset extends Asset {
     const mdx = new MDXC(
       Object.assign(
         {
-          commonJS: false,
           linkify: true,
           highlight: false,
         },
