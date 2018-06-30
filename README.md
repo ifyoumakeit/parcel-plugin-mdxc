@@ -4,6 +4,8 @@ Use React Components with Markdown in Parcel with [MDXC](https://github.com/jame
 
 Plugin originally forked and modified from [parcel-plugin-markdown](https://github.com/gongpeione/parcel-plugin-markdown).
 
+Not sure why I didn't just use [https://github.com/hamlim/parcel-plugin-mdx](https://github.com/hamlim/parcel-plugin-mdx). Oh well.
+
 ## Usage
 
 ```
@@ -36,8 +38,26 @@ render(<Document />, document.querySelector("#root"));
 
 This plugin also supports config in .mdxcrc, mdxc.config.js.
 
-## Run example
+## Example
 
 ```bash
-git clone
+git clone https://github.com/ifyoumakeit/parcel-plugin-mdxc
+cd parcel-plugin-mdxc
+yarn
+cd examples
+yarn
+yarn start
 ```
+
+## Tests
+
+Run with Jest.
+
+```bash
+yarn test
+```
+
+## TODO
+
+- [ ] Add image support
+
