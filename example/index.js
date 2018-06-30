@@ -1,3 +1,6 @@
-import md from './index.md';
+import Mdx from "./index.md";
 
-document.body.innerHTML = md;
+import React from "react";
+import ReactDOM from "react-dom";
+
+console.log(Mdx, "!");

@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MarkdownAsset should parse markdown correctly. 1`] = `
+Object {
+  "js": "import React, { createElement, createFactory } from 'react'
+
+export default function({ factories={} }) {
+  const {
+    h1 = createFactory('h1'),
+    h2 = createFactory('h2'),
+    wrapper = createFactory('div'),
+  } = factories
+
+  return wrapper({},
+
+h1({\\"id\\": \\"Test\\"},
+  \\"Test\\",
+),
+h2({\\"id\\": \\"H2\\"},
+  \\"H2\\",
+)
+
+  )
+}
+",
+}
+`;
+
+exports[`MarkdownAsset should parse markdown with images correctly. 1`] = `
+Object {
+  "js": "import React, { createElement, createFactory } from 'react'
+
+export default function({ factories={} }) {
+  const {
+    h1 = createFactory('h1'),
+    h2 = createFactory('h2'),
+    img = createFactory('img'),
+    p = createFactory('p'),
+    wrapper = createFactory('div'),
+  } = factories
+
+  return wrapper({},
+
+h1({\\"id\\": \\"Test\\"},
+  \\"Test\\",
+),
+h2({\\"id\\": \\"H2\\"},
+  \\"H2\\",
+),
+p({},
+  img({\\"src\\": \\"./img.jpg\\", \\"alt\\": \\"\\"}),
+)
+
+  )
+}
+",
+}
+`;

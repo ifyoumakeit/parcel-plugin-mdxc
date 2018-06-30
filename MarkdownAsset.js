@@ -1,21 +1,27 @@
-const HTMLAsset = require('parcel-bundler/src/assets/HTMLAsset');
-const marked = require('marked');
+const { Asset } = require("parcel-bundler");
+const MDXC = require("mdxc");
 
-module.exports = class MarkdownAsset extends HTMLAsset {
-    constructor(name, pkg, options) {
-        super(name, pkg, options);
-        this.type = 'js';
-        this.markedOptions = pkg.marked || {}
-    }
+class MarkdownAsset extends Asset {
+  constructor(name, options) {
+    super(name, options);
+    this.type = "js";
+    this.mdxOptions = options.mdx;
 
-    parse(code) {
-        this.contents = marked(code, this.markedOptions);
-        return super.parse(this.contents);
-    }
+    this.mdx = new MDXC(
+      Object.assign(
+        {
+          linkify: true,
+          typographer: true,
+        },
+        options.mdx
+      )
+    );
+  }
 
-    generate() {
-        return {
-            js: `module.exports=\`${super.generate()}\``
-        };
-    }
+  parse(code) {
+    this.contents = this.mdx.render(code);
+    return super.parse(this.contents);
+  }
 }
+
+module.exports = MarkdownAsset;
