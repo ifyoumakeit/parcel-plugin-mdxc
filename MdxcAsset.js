@@ -1,9 +1,9 @@
 const { Asset } = require("parcel-bundler");
 const MDXC = require("mdxc");
 
-const CONFIG_FILES = [".mdxcrc", "mdxc.config.js", "package.json"];
+const CONFIG_FILES = [".mdxcrc", "mdxc.config.js"];
 
-class MdxcAsset extends Asset {
+class MDXCAsset extends Asset {
   constructor(name, pkg, options = {}) {
     super(name, pkg, options);
     this.type = "js";
@@ -15,15 +15,7 @@ class MdxcAsset extends Asset {
       packageKey: "mdxc",
     });
 
-    const mdx = new MDXC(
-      Object.assign(
-        {
-          linkify: true,
-          highlight: false,
-        },
-        config || this.mdxc || {}
-      )
-    );
+    const mdx = new MDXC(Object.assign(config || this.mdxc || {}));
 
     return [
       {
@@ -34,4 +26,4 @@ class MdxcAsset extends Asset {
   }
 }
 
-module.exports = MdxcAsset;
+module.exports = MDXCAsset;

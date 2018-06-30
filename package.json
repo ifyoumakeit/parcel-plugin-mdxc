@@ -3,7 +3,7 @@
   "version": "0.0.0-beta0.6",
   "main": "index.js",
   "license": "MIT",
-  "description": "Parcel plugin for mdxc.",
+  "description": "Parcel plugin for MDXC",
   "author": "Dave Garwacke",
   "repository": {
     "type": "git",
