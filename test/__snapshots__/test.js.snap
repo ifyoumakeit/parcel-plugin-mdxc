@@ -1,5 +1,39 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`MdxcAsset should parse config with images correctly. 1`] = `
+Array [
+  Object {
+    "type": "js",
+    "value": "import React, { createElement, createFactory } from 'react'
+
+export default function({ factories={} }) {
+  const {
+    h1 = createFactory('h1'),
+    h2 = createFactory('h2'),
+    img = createFactory('img'),
+    p = createFactory('p'),
+    wrapper = createFactory('div'),
+  } = factories
+
+  return wrapper({},
+
+h1({\\"id\\": \\"Test\\"},
+  \\"Test\\",
+),
+h2({\\"id\\": \\"H2\\"},
+  \\"H2\\",
+),
+p({},
+  img({\\"src\\": \\"./img.jpg\\", \\"alt\\": \\"\\"}),
+)
+
+  )
+}
+",
+  },
+]
+`;
+
 exports[`MdxcAsset should parse markdown correctly. 1`] = `
 Array [
   Object {
@@ -59,6 +93,35 @@ h2({\\"id\\": \\"H2\\"},
 ),
 p({},
   img({\\"src\\": \\"./img.jpg\\", \\"alt\\": \\"\\"}),
+)
+
+  )
+}
+",
+  },
+]
+`;
+
+exports[`MdxcAsset should parse with preact. 1`] = `
+Array [
+  Object {
+    "type": "js",
+    "value": "import React, { createElement, createFactory } from 'react'
+
+export default function({ factories={} }) {
+  const {
+    h1 = createFactory('h1'),
+    h2 = createFactory('h2'),
+    wrapper = createFactory('div'),
+  } = factories
+
+  return wrapper({},
+
+h1({\\"id\\": \\"Test\\"},
+  \\"Test\\",
+),
+h2({\\"id\\": \\"H2\\"},
+  \\"H2\\",
 )
 
   )

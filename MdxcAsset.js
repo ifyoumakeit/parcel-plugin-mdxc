@@ -1,17 +1,19 @@
 const { Asset } = require("parcel-bundler");
 const MDXC = require("mdxc");
 
+const CONFIG_FILES = [".mdxcrc", "mdxc.config.js", "package.json"];
+
 class MdxcAsset extends Asset {
-  constructor(...args) {
-    super(...args);
+  constructor(name, pkg, options = {}) {
+    super(name, pkg, options);
     this.type = "js";
+    this.mdxc = options.mdxc;
   }
 
   async generate() {
-    const config = await this.getConfig(
-      [".mdxcrc", "mdxc.config.js", "package.json"],
-      { packageKey: "mdxc" }
-    );
+    const config = await this.getConfig(CONFIG_FILES, {
+      packageKey: "mdxc",
+    });
 
     const mdx = new MDXC(
       Object.assign(
@@ -19,7 +21,7 @@ class MdxcAsset extends Asset {
           linkify: true,
           highlight: false,
         },
-        config
+        config || this.mdxc || {}
       )
     );
 
